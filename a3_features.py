@@ -16,12 +16,15 @@ if __name__ == "__main__":
 
     print("Reading {}...".format(args.inputdir))
     # Do what you need to read the documents here.
+    complete_files, author_contents_complete, authors = read_documents(args.inputdir)
 
     print("Constructing table with {} feature dimensions and {}% test instances...".format(args.dims, args.testsize))
     # Build the table here.
+    table_df = build_table(args.dims, args.testsize, author_contents_complete, authors)
     
     print("Writing to {}...".format(args.outputfile))
     # Write the table out here.
+    table_df.to_csv(args.outputfile)
 
     print("Done!")
     
